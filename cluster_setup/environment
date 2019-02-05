@@ -1,0 +1,5 @@
+export NAME=jhub.k8s.local
+export KOPS_STATE_STORE=s3://clusters.k8s.nycdsa
+export REGION=`curl -s http://169.254.169.254/latest/dynamic/instance-identity/document|grep region|awk -F\" '{print $4}'`
+export ZONES=$(aws ec2 describe-availability-zones --region $REGION | grep ZoneName | awk '{print $2}' | tr -d '"')
+export ZONES=$(echo $ZONES | tr -d " " | rev | cut -c 2- | rev)
