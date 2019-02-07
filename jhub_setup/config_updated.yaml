@@ -10,3 +10,16 @@ singleuser:
 hub:
   extraConfig: |-
     c.Spawner.cmd = ['jupyter-labhub']
+
+auth:
+  type: dummy
+  dummy:
+    password: 'testpswd'
+  admin:
+    access: true
+    users:
+      - admin_user
+  whitelist:
+    users:
+      - shuyan
+      - tester

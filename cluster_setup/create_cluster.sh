@@ -6,4 +6,5 @@ kops create cluster $NAME \
   --master-volume-size 10 \
   --node-size t3.medium \
   --node-volume-size 10 \
-  --networking weave
+  --networking weave \
+  --topology private
