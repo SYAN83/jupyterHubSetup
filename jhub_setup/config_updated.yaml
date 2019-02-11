@@ -31,10 +31,19 @@ singleuser:
     tag: a238993ad594
   memory:
     limit: 4G
-    guarantee: 1G
+    guarantee: 0.5G
   cpu:
     limit: 2
-    guarantee: 0.5
+    guarantee: 0.2
+  storage:
+    capacity: 4Gi
+    extraVolumes:
+      - name: jhub-shared
+        persistentVolumeClaim:
+          claimName: pv-claim-cloudlab
+    extraVolumeMounts:
+      - name: jhub-shared
+        mountPath: /mnt/data
 
 hub:
   extraConfig: |-
