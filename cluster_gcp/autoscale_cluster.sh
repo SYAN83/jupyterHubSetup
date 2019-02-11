@@ -2,6 +2,7 @@
 
 gcloud beta container node-pools create user-pool \
   --cluster nycdsa-cloudlab \
+  --preemptible \
   --machine-type n1-standard-2 \
   --num-nodes 0 \
   --enable-autoscaling \

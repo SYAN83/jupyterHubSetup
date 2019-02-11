@@ -1,0 +1,34 @@
+hub:
+  cookieSecret: "8627b2cfaac1d70b18f2bde0cba9f3b7a9090ddd87ff044935b855dd81aa0acc"        
+proxy:
+  secretToken: "e6dfc88ad3de50d3f44f905595bbadaeeb3598ed9e8b1ba50a08787292965cd0"
+
+singleuser:
+  defaultUrl: "/lab"
+  image:
+    name: jupyter/r-notebook
+    tag: a238993ad594
+  memory:
+    limit: 4G
+    guarantee: 1G
+  cpu:
+    limit: 2
+    guarantee: 1
+
+hub:
+  extraConfig: |-
+    c.Spawner.cmd = ['jupyter-labhub']
+
+auth:
+  type: dummy
+  dummy:
+    password: 'pswd'
+  admin:
+    access: true
+    users:
+      - jhub_admin@nycdatascience.com
+  whitelist:
+    users:
+      - shu.yan@nycdatascience.com
+      - chris.neimeth@nycdatascience.com
+

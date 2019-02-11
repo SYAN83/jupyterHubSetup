@@ -1,5 +1,6 @@
 #!/bin/sh
 
+#CONFIG_FILE=$1
 RELEASE=jhub
 
 helm upgrade $RELEASE jupyterhub/jupyterhub \

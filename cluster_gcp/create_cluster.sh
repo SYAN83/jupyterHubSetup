@@ -7,6 +7,7 @@ gcloud container clusters create \
   --cluster-version latest \
   nycdsa-cloudlab
 
+kubectl get node
 
 kubectl create clusterrolebinding cluster-admin-binding \
   --clusterrole=cluster-admin \
