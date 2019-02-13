@@ -1,9 +1,94 @@
+hub:
+  cookieSecret: "8627b2cfaac1d70b18f2bde0cba9f3b7a9090ddd87ff044935b855dd81aa0acc"        
 proxy:
   secretToken: "e6dfc88ad3de50d3f44f905595bbadaeeb3598ed9e8b1ba50a08787292965cd0"
 
+prePuller:
+  continuous:
+    enabled: true
+
+scheduling:
+  userScheduler:
+    enabled: true
+  podPriority:
+    enabled: true
+  userPlaceholder:
+    enabled: true
+    replicas: 1
+  userPods:
+    nodeAffinity:
+      matchNodePurpose: prefer
+
+cull:
+  enabled: true
+  timeout: 600
+  every: 150
+
 singleuser:
   defaultUrl: "/lab"
+  image:
+    name: jupyter/minimal-notebook
+    tag: 83ed2c63671f
+  profileList:
+    - display_name: "Base environment"
+      description: "Ubuntu 18.04 with Jupyter Notebook"
+      default: true
+    - display_name: "Datascience environment"
+      kubespawner_override:
+        image: jupyter/r-notebook:83ed2c63671f
+    # - display_name: "Tensorflow environment"
+    #  description: "Jupyter Notebook Scientific Python Stack with Tensorflow"
+    #  kubespawner_override:
+    #    image: jupyter/tensorflow-notebook:83ed2c63671f
+    - display_name: "Spark environment"
+      description: "Jupyter Notebook Python, Spark, Mesos Stack"
+      kubespawner_override:
+        image: jupyter/pyspark-notebook:83ed2c63671f
+    - display_name: "Hadoop base"
+      kubespawner_override:
+        image: nycdsa/hadoop-notebook:0.1
+
+  memory:
+    limit: 2G
+    guarantee: 0.5G
+  cpu:
+    limit: 1
+    guarantee: 0.2
+  storage:
+    capacity: 4Gi
+    # extraVolumes:
+    #   - name: jhub-shared
+    #     persistentVolumeClaim:
+    #       claimName: pv-claim-cloudlab
+    # extraVolumeMounts:
+    #   - name: jhub-shared
+    #     mountPath: /mnt/data
+    #     readOnly: true
 
 hub:
   extraConfig: |-
     c.Spawner.cmd = ['jupyter-labhub']
+
+auth:
+  type: dummy
+  dummy:
+    password: 'nycdsa_jhub'
+  admin:
+    access: true
+    users:
+      - jhub_admin
+      - course_admin
+  whitelist:
+    users:
+      - shuyan
+      - chrisneimeth
+      - lukelin
+      - zeyuzhang
+      - aikoliu
+      - xunwang
+      - royceho
+      - vivianzhang
+      - dracezhang
+      - alexbaransky
+      - justinfox
+
