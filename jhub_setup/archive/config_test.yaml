@@ -1,0 +1,54 @@
+proxy:
+  secretToken: "e6dfc88ad3de50d3f44f905595bbadaeeb3598ed9e8b1ba50a08787292965cd0"
+
+scheduling:
+  userScheduler:
+    enabled: true
+  podPriority:
+    enabled: true
+  userPods:
+    nodeAffinity:
+      matchNodePurpose: prefer
+
+cull:
+  enabled: true
+  timeout: 600
+  every: 150
+
+singleuser:
+  defaultUrl: "/lab"
+  image:
+    name: jupyter/minimal-notebook
+    tag: 83ed2c63671f
+  profileList:
+    - display_name: "Base environment"
+      description: "Ubuntu 18.04 with Jupyter Notebook"
+      default: true
+    - display_name: "Hadoop environment"
+      kubespawner_override:
+        image: nycdsa/hadoop-notebook:0.3
+  memory:
+    limit: 2G
+    guarantee: 0.5G
+  cpu:
+    limit: 1
+    guarantee: 0.2
+  storage:
+    capacity: 4Gi
+
+hub:
+  extraConfig:
+    00-first-config: |
+      c.JupyterHub.logo_file = 'https://pbs.twimg.com/media/Cs-gY09WgAI1mar.png'
+    01-second-config: |
+      c.Spawner.cmd = ['jupyter-labhub']
+
+auth:
+  type: dummy
+  dummy:
+    password: 'nycdsa_test'
+  admin:
+    access: true
+    users:
+      - test_admin
+

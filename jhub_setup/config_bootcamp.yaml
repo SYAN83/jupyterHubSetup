@@ -1,5 +1,5 @@
 proxy:
-  secretToken: "e6dfc88ad3de50d3f44f905595bbadaeeb3598ed9e8b1ba50a08787292965cd0"
+  secretToken: "e8962fa1d917e7de10bc405721372752374db3b9ae8d5c2a3647b964168d9a27"
 
 prePuller:
   continuous:
@@ -12,15 +12,15 @@ scheduling:
     enabled: true
   userPlaceholder:
     enabled: true
-    replicas: 1
+    replicas: 2
   userPods:
     nodeAffinity:
       matchNodePurpose: prefer
 
 cull:
   enabled: true
-  timeout: 600
-  every: 150
+  timeout: 1800
+  every: 300
 
 singleuser:
   defaultUrl: "/lab"
@@ -47,24 +47,8 @@ hub:
 auth:
   type: dummy
   dummy:
-    password: 'EchEt7JEHS'
+    password: "nHkSxtP2K7"
   admin:
     access: true
     users:
-      - aetnaJHubAdmin@k8s
-  whitelist:
-    users:
-      - test
-      - alex
-      - justinfox
-      - tmolnar
-      - allenc3
-      - conoverr
-      - murphyr
-      - siddiquit
-      - murphyr
-      - bommanlingaiahm
-      - murphyr
-      - mli01
-      - robinsonam
-      - quereshiw
+      - bootcampJHubAdmin@k8s

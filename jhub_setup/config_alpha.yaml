@@ -1,0 +1,24 @@
+proxy:
+  secretToken: "9df93a1bfd5795e791dbe3e15450c3d9ac7ad9b13efd4ee3746d6c6b797ccacb"
+
+singleuser:
+  defaultUrl: "/lab"
+  image:
+    name: jupyter/tensorflow-notebook
+    tag: 7db1bd2a7511
+  profileList:
+    - display_name: "Tensorflow environment"
+      default: true
+
+hub:
+  extraConfig:
+    jupyterlab: |
+      c.Spawner.cmd = ['jupyter-labhub']
+
+auth:
+  type: dummy
+  dummy:
+    password: "jhub_alpha_pswd"
+  admin:
+    users:
+      - alphaAdmin

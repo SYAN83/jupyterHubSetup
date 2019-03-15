@@ -33,20 +33,20 @@ singleuser:
     - display_name: "Base environment"
       description: "Ubuntu 18.04 with Jupyter Notebook"
       default: true
-    - display_name: "Datascience environment"
-      kubespawner_override:
-        image: jupyter/r-notebook:83ed2c63671f
+    # - display_name: "Datascience environment"
+    #  kubespawner_override:
+    #    image: jupyter/r-notebook:83ed2c63671f
     # - display_name: "Tensorflow environment"
     #  description: "Jupyter Notebook Scientific Python Stack with Tensorflow"
     #  kubespawner_override:
     #    image: jupyter/tensorflow-notebook:83ed2c63671f
-    - display_name: "Spark environment"
-      description: "Jupyter Notebook Python, Spark, Mesos Stack"
-      kubespawner_override:
-        image: jupyter/pyspark-notebook:83ed2c63671f
-    - display_name: "Hadoop base"
-      kubespawner_override:
-        image: nycdsa/hadoop-notebook:0.1
+    # - display_name: "Spark environment"
+    #   description: "Jupyter Notebook Python, Spark, Mesos Stack"
+    #   kubespawner_override:
+    #     image: jupyter/pyspark-notebook:83ed2c63671f
+    # - display_name: "Hadoop base"
+    #   kubespawner_override:
+    #     image: nycdsa/hadoop-notebook:0.1
 
   memory:
     limit: 2G
