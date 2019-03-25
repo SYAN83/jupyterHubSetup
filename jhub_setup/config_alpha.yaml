@@ -4,11 +4,23 @@ proxy:
 singleuser:
   defaultUrl: "/lab"
   image:
-    name: jupyter/tensorflow-notebook
-    tag: 7db1bd2a7511
+    name: nycdsa/hadoop-notebook-spark
+    tag: 0.3
+    # name: jupyter/tensorflow-notebook
+    # tag: 7db1bd2a7511
   profileList:
-    - display_name: "Tensorflow environment"
+    # - display_name: "Tensorflow Environment"
+    #   description: "Tensorflow version 1.12"
+    #   default: true
+    - display_name: "Hadoop Environment"
+      description: "Hadoop pseudo-distributed mode providing access to Hive, Pig and Spark"
       default: true
+    #   kubespawner_override:
+    #     image: nycdsa/hadoop-notebook-spark:0.3
+    - display_name: "Base Notebook"
+      description: "Small base image for Jupyter Notebook stacks"
+      kubespawner_override:
+        image: jupyter/base-notebook:022da74a0c8f
 
 hub:
   extraConfig:
