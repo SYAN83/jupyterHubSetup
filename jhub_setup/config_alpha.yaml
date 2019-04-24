@@ -34,3 +34,9 @@ auth:
   admin:
     users:
       - alphaAdmin
+  whitelist:
+    users:
+      - praveen
+      - sylviaych
+      - kshannon
+      - jake
